@@ -7,6 +7,15 @@ var TodoCtrl = function($scope, $http) {
     var tc = this;
 
     tc.JsonData = [];
+    tc.idNumbers = 2;
+      tc.newItem = {
+      "id" :  tc.idNumbers,
+      "name" :  "",
+      "comment": "",
+      "done": false,
+      "removed": false
+    };
+
 
     var JsonSuccess = function(response) {
             tc.JsonData = response.data;
@@ -22,26 +31,35 @@ var TodoCtrl = function($scope, $http) {
 
     tc.addItem = function (){
 
-      var newItem ={
-      "id" :  1,
+      tc.idNumbers ++; // update id number
+      tc.JsonData.push(tc.newItem) // push changes to json
+
+      //clear new item for further use
+      tc.newItem = {
+      "id" :  tc.idNumbers,
       "name" :  "",
       "comment": "",
-      "done": false
+      "done": false,
+      "removed": false
     };
 
-      newItem.name = 'bob';
-      newItem.comment = 'test';
 
-      tc.JsonData.push(newItem);
 
     }
 
+    tc.removeItem = function (selectedIndex){
+
+      console.log(selectedIndex);
+
+      console.log(tc.JsonData[selectedIndex].removed);
+      tc.JsonData[selectedIndex].removed = true;
+  console.log(tc.JsonData[selectedIndex].removed);
+    }
+
+
     tc.doneItem = function (selectedObj){
 
-      console.log('selectedObj',selectedObj);
-      selectedObj.done = true;
-console.log('selectedObj',selectedObj);
-
+      selectedObj.done = selectedObj.done ? false : true;
 
     }
 

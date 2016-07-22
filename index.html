@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title></title>
-
+    <link rel="stylesheet" type="text/css" href="css/todo.css">
 </head>
 
 <body ng-controller='TodoCtrl as tc'>
@@ -17,8 +17,8 @@
         <tr>
           <tr>
               <th>1</th>
-              <th><input type='text'></input></th>
-              <th><input type='text'></input></th>
+              <th><input type='text' ng-model='tc.newItem.name'></input></th>
+              <th><input type='text'  ng-model='tc.newItem.comment'></input></th>
           <tr>
           <tr>
             <td><input type='button' value='add' ng-click='tc.addItem()'></input></td>
@@ -35,12 +35,12 @@
                         <th>Done</th>
                         <th>Remove</th>
                     <tr>
-                    <tr ng-repeat='item in tc.JsonData'>
+                    <tr ng-repeat='item in tc.JsonData | filter: {removed:false}' ng-class="{'todoDone': item.done}">
                         <td>{{item.id}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.comment}}</td>
-                        <td>{{item.done}}</td>
-                        <td><input type='button' value='Done' ng-click="tc.doneItem(item)"></td>
+                        <td>{{item.done}} <input type='button' value='Done' ng-click="tc.doneItem(item)"></td>
+                        <td><input type='button' value='Remove' ng-click="tc.removeItem($index)"></td>
                     <tr>
                 </table>
             </div>
