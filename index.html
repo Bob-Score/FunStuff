@@ -32,11 +32,15 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Comment</th>
+                        <th>Done</th>
+                        <th>Remove</th>
                     <tr>
                     <tr ng-repeat='item in tc.JsonData'>
                         <td>{{item.id}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.comment}}</td>
+                        <td>{{item.done}}</td>
+                        <td><input type='button' value='Done' ng-click="tc.doneItem(item)"></td>
                     <tr>
                 </table>
             </div>

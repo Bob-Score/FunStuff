@@ -1,9 +1,12 @@
+
+//  run python -m SimpleHTTPServer 8000
+//
+//
 var TodoCtrl = function($scope, $http) {
 
     var tc = this;
 
     tc.JsonData = [];
-
 
     var JsonSuccess = function(response) {
             tc.JsonData = response.data;
@@ -22,13 +25,23 @@ var TodoCtrl = function($scope, $http) {
       var newItem ={
       "id" :  1,
       "name" :  "",
-      "comment": ""
+      "comment": "",
+      "done": false
     };
 
       newItem.name = 'bob';
       newItem.comment = 'test';
 
       tc.JsonData.push(newItem);
+
+    }
+
+    tc.doneItem = function (selectedObj){
+
+      console.log('selectedObj',selectedObj);
+      selectedObj.done = true;
+console.log('selectedObj',selectedObj);
+
 
     }
 
