@@ -11,12 +11,10 @@
     <div>
       <table>
         <tr>
-            <th>ID</th>
             <th>Name</th>
             <th>Comment</th>
         <tr>
           <tr>
-              <th>1</th>
               <th><input type='text' ng-model='tc.newItem.name'></input></th>
               <th><input type='text'  ng-model='tc.newItem.comment'></input></th>
           <tr>
@@ -39,7 +37,7 @@
                         <td>{{item.id}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.comment}}</td>
-                        <td>{{item.done}} <input type='button' value='Done' ng-click="tc.doneItem(item)"></td>
+                        <td class='clickable' ng-click="tc.doneItem(item)">{{item.done}}</td>
                         <td><input type='button' value='Remove' ng-click="tc.removeItem($index)"></td>
                     <tr>
                 </table>
