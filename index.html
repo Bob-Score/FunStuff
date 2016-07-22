@@ -4,7 +4,11 @@
 <head>
     <meta charset="utf-8">
     <title></title>
+    <script src='js/bootstrap.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/todo.css">
+
 </head>
 
 <body ng-controller='TodoCtrl as tc'>
@@ -38,7 +42,7 @@
                         <td>{{item.name}}</td>
                         <td>{{item.comment}}</td>
                         <td class='clickable' ng-click="tc.doneItem(item)">{{item.done}}</td>
-                        <td><input type='button' value='Remove' ng-click="tc.removeItem($index)"></td>
+                        <td><i class="fa fa-trash clickable" aria-hidden="true" ng-click="tc.removeItem($index)"></i></td>
                     <tr>
                 </table>
             </div>
