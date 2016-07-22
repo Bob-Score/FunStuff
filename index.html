@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app='MyTodoApp'>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+</head>
+
+<body ng-controller='TodoCtrl as tc'>
+    <div>
+      <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Comment</th>
+        <tr>
+          <tr>
+              <th>1</th>
+              <th><input type='text'></input></th>
+              <th><input type='text'></input></th>
+          <tr>
+          <tr>
+            <td><input type='button' value='add' ng-click='tc.addItem()'></input></td>
+          </tr>
+      </table>
+<BR>
+    </div>
+            <div>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Comment</th>
+                    <tr>
+                    <tr ng-repeat='item in tc.JsonData'>
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.comment}}</td>
+                    <tr>
+                </table>
+            </div>
+
+            <script src='js/angular.min.js'></script>
+            <script src='app.js'></script>
+            <script src='controllers/TodoCtrl.js'></script>
+</body>
+
+</html>
