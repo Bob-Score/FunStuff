@@ -1,0 +1,46 @@
+<div class="row" >
+    <div class="col-sm-5">
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon" id="sizing-addon3">Add</span>
+            <input type="text" class="form-control" placeholder="Note" ng-model='tc.newItem.name' aria-describedby="sizing-addon3">
+        </div>
+    </div>
+    <div class="col-sm-5">
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon" id="sizing-addon3">Add</span>
+            <input type="text" class="form-control" placeholder="Comment" ng-model='tc.newItem.comment' aria-describedby="sizing-addon3">
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <button type="button" class="btn btn-default" ng-click='tc.addItem()'>Add</button>
+    </div>
+</div>
+<div class="row">
+    <BR>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat='item in tc.JsonData | filter: {removed:false}' ng-class="{'todoDone': item.done}">
+                <div class="row">
+                    <div class="col-sm-1">
+                        {{item.id}}
+                    </div>
+                    <div class="col-sm-2">
+                        {{item.name}}
+                    </div>
+                    <div class="col-sm-5">
+                        {{item.comment}}
+                    </div>
+                      <div class="col-sm-2 text-right">
+                          <i class='clickable fa'  ng-click="tc.doneItem(item)" ng-class="item.done ? 'fa-check-circle' : 'fa-times-circle'"></i>
+                    </div>
+                    <div class="col-sm-2 text-right">
+                        <i class="fa fa-trash clickable" aria-hidden="true" ng-click="tc.removeItem(item)"></i>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+</div>

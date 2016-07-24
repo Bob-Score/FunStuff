@@ -1,76 +1,39 @@
 <!DOCTYPE html>
-<html ng-app='MyTodoApp'>
+<html ng-app='MyApp'>
 
 <head>
     <meta charset="utf-8">
     <title></title>
-    <script src='js/bootstrap.min.js'></script>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/todo.css">
-
+  <script src='js/bootstrap.min.js'></script>
 </head>
 
-<body ng-controller='TodoCtrl as tc'>
-
+<body >
     <div class="jumbotron text-center">
         <h1>My Doings Page</h1>
         <p>*not that type*</p>
-    </div>
-
-    <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center">
-                <h3>Might put a menu thing here</h3>
+                <a href='#' class='btn btn-primary'>Welcome</a>
+                <a href='#/todo' class='btn btn-primary'>Todo List</a>
+                <a href='#/threejs' class='btn btn-primary'>Three JS</a>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-5">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-addon" id="sizing-addon3">Add</span>
-                    <input type="text" class="form-control" placeholder="Note" ng-model='tc.newItem.name' aria-describedby="sizing-addon3">
-                </div>
-            </div>
-            <div class="col-sm-5">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-addon" id="sizing-addon3">Add</span>
-                    <input type="text" class="form-control" placeholder="Comment" ng-model='tc.newItem.comment' aria-describedby="sizing-addon3">
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-default"  ng-click='tc.addItem()'>Add</button>
-            </div>
-        </div>
-        <div class="row">
-          <BR>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Comment</th>
-                        <th>Done</th>
-                        <th>Remove</th>
-                    </tr>
-                    <tr ng-repeat='item in tc.JsonData | filter: {removed:false}' ng-class="{'todoDone': item.done}">
-                        <td>{{item.id}}</td>
-                        <td>{{item.name}}</td>
-                        <td>{{item.comment}}</td>
-                        <td class='clickable' ng-click="tc.doneItem(item)">{{item.done}}</td>
-                        <td><i class="fa fa-trash clickable" aria-hidden="true" ng-click="tc.removeItem($index)"></i></td>
-                        <tr>
-                </table>
-            </div>
+    </div>
+    <div class="container">
+        <div ng-view>
         </div>
     </div>
 
     </div>
-
     <script src='js/angular.min.js'></script>
+    <script src='js/angular-route.min.js'></script>
     <script src='app.js'></script>
+    <script src='routes/routes.js'></script>
     <script src='controllers/TodoCtrl.js'></script>
+
 
 </body>
 

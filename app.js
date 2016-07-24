@@ -1,2 +1,2 @@
 
-var MyTodoApp = angular.module('MyTodoApp', []);
+var MyApp = angular.module('MyApp', ["ngRoute"]);

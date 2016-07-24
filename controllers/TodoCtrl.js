@@ -1,4 +1,3 @@
-
 //  run python -m SimpleHTTPServer 8000
 //
 //
@@ -7,13 +6,13 @@ var TodoCtrl = function($scope, $http) {
     var tc = this;
 
     tc.JsonData = [];
-    tc.idNumbers = 2;
-      tc.newItem = {
-      "id" :  tc.idNumbers,
-      "name" :  "",
-      "comment": "",
-      "done": false,
-      "removed": false
+    tc.idNumbers = 0;
+    tc.newItem = {
+        "id": tc.idNumbers,
+        "name": "",
+        "comment": "",
+        "done": false,
+        "removed": false
     };
 
 
@@ -21,7 +20,7 @@ var TodoCtrl = function($scope, $http) {
             tc.JsonData = response.data;
         },
         JsonError = function(response) {
-          alert("something wrong with Json Data load");
+            alert("something wrong with Json Data load");
         };
 
     $http.get('data/jsonData.json').then(
@@ -29,41 +28,35 @@ var TodoCtrl = function($scope, $http) {
         JsonError
     );
 
-    tc.addItem = function (){
+    tc.addItem = function() {
 
-      tc.idNumbers ++; // update id number
-      tc.JsonData.push(tc.newItem) // push changes to json
+        tc.idNumbers++; // update id number
+        tc.JsonData.push(tc.newItem) // push changes to json
 
-      //clear new item for further use
-      tc.newItem = {
-      "id" :  tc.idNumbers,
-      "name" :  "",
-      "comment": "",
-      "done": false,
-      "removed": false
-    };
-
-
+        //clear new item for further use
+        tc.newItem = {
+            "id": tc.idNumbers,
+            "name": "",
+            "comment": "",
+            "done": false,
+            "removed": false
+        };
 
     }
 
-    tc.removeItem = function (selectedIndex){
+    tc.removeItem = function(selectedObj) {
 
-      console.log(selectedIndex);
-
-      console.log(tc.JsonData[selectedIndex].removed);
-      tc.JsonData[selectedIndex].removed = true;
-  console.log(tc.JsonData[selectedIndex].removed);
-    }
-
-
-    tc.doneItem = function (selectedObj){
-
-      selectedObj.done = selectedObj.done ? false : true;
+        selectedObj.removed = true;
 
     }
 
+
+    tc.doneItem = function(selectedObj) {
+
+        selectedObj.done = selectedObj.done ? false : true;
+
+    }
 
 };
 
-MyTodoApp.controller("TodoCtrl", ["$scope", "$http", TodoCtrl])
+MyApp.controller("TodoCtrl", ["$scope", "$http", TodoCtrl])
